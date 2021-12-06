@@ -8,7 +8,7 @@ const LineItems = ({handleCheck, handleDelete , item}) => {
                         checked = {item.checked}
                         onChange = {()=> handleCheck(item.id)}
                         />
-                        <label>{item.task}</label>
+                        <label style = {(item.checked) ? {textDecoration : "line-through"} : null }>{item.task}</label>
                         <FaTrashAlt
                         onClick = {() => handleDelete(item.id)}
                         role = "button"

@@ -1,9 +1,12 @@
-const Footer = () => {
+
+const Footer = ({length}) => {
     return (
         <footer>
-            <p> CopyRight &copy; 2021 </p>
+            <p>{length}  {length === 1 ? "Task" : "Tasks"} Left </p>
         </footer>
     )
 }
+
+
 
 export default Footer
