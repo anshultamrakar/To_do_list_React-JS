@@ -45,7 +45,7 @@ main {
   flex-direction: column;
   flex-grow: 1;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   overflow-y: auto;
 }
 

@@ -2,7 +2,7 @@
 const Footer = ({length}) => {
     return (
         <footer>
-            <p>{length}  {length === 1 ? "Task" : "Tasks"} Left </p>
+            <p>{length} items {length === 1 ? "Task" : "Tasks"} Left </p>
         </footer>
     )
 }

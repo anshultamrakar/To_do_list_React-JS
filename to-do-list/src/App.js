@@ -7,67 +7,56 @@ import  { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [items , setItems] = useState([
-    {
-    id : 1, 
-    checked : false,
-    task : "Complete the UI protion"
-  },
-  {
-    id : 2, 
-    checked : false,
-    task : "Make a linkedin profile"
-  },
-  {
-    id : 3, 
-    checked : false,
-    task : "Make a Twitter account "
-  },
-  {
-    id : 4, 
-    checked : false,
-    task : "Make a Ecom project on React  "
-  }
-])
+const [items , setItems] = useState(JSON.parse(localStorage.getItem('shoppingList')))
+const [newItem , setNewItem ] = useState('')
+const [search , setSearch ] = useState('')
 
-const [newItem , setNewItem] = useState('')
+const savedItem = (newItem) => {
+  setItems(newItem)
+  localStorage.setItem('shoppingList', JSON.stringify(newItem))
+}
 
-const addItems 
+const addItems = (task) => {
+  const id = items.length ? items[items.length - 1].id + 1 : 1;
+  const myNewItem = {id , checked : false , task}
+  const listItems = [...items, myNewItem]
+  savedItem(listItems)
+}
 
 const handleSubmit = (e) => {
  e.preventDefault();
  if(!newItem) return ;
- console.log(newItem);
+ addItems(newItem)
   setNewItem('')
 }
 
 
 const handleCheck = (id) => {
   const listItems = items.map((item) => item.id === id ? {...item , checked : !item.checked} : item)
-  setItems(listItems)
-  localStorage.setItem('shoppingList', JSON.stringify(listItems))
-
+  savedItem(listItems)
 }
 
 const handleDelete = (id) => {
   const listItems =  items.filter((item) => item.id !== id )
-  setItems(listItems)
-  localStorage.setItem('shoppingList', JSON.stringify(listItems))
+  savedItem(listItems)
     
 }
   return (
     <div className="App">
      <Header title = "Get this shit done 👇"/>
-     <SearchItems
-     />
      <AddItems
+     newItem = {newItem}
      handleSubmit = {handleSubmit}
      setNewItem = {setNewItem}
      />
+     <SearchItems
+     search = {search}
+     setSearch = {setSearch}
+     />
      <Content
+     items = {items.filter(item => ((item.task).toLowerCase()).includes(search.toLowerCase()))}
      handleCheck = {handleCheck}
      handleDelete = {handleDelete}
-     items = {items}
      />
      <Footer
       length= {items.length}
