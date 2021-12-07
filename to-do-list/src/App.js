@@ -31,53 +31,38 @@ function App() {
 ])
 
 const [newItem , setNewItem] = useState('')
-const [search , setSearch] = useState('')
 
-
-
-const addItem = (item) => {
-    const id = items.length ? items[items.length -1].id + 1 : 1;
-    const myNewItem = {id , checked : false , items}
-    const listItems = [...items , myNewItem]
-    savedItems(listItems)
-}
-
+const addItems 
 
 const handleSubmit = (e) => {
-  e.preventDefault()
-  if (!newItem) return;
-    addItem(newItem);
-    setNewItem('');
+ e.preventDefault();
+ if(!newItem) return ;
+ console.log(newItem);
+  setNewItem('')
 }
 
-
-const savedItems = (newItems) => {
-  setItems(newItems)
-  localStorage.setItem('shoppingList', JSON.stringify(listItems))
-}
 
 const handleCheck = (id) => {
   const listItems = items.map((item) => item.id === id ? {...item , checked : !item.checked} : item)
-  savedItems(listItems)
+  setItems(listItems)
+  localStorage.setItem('shoppingList', JSON.stringify(listItems))
 
 }
 
 const handleDelete = (id) => {
-    const listItems = items.filter((item) => item.id !== id)
-    savedItems(listItems)
+  const listItems =  items.filter((item) => item.id !== id )
+  setItems(listItems)
+  localStorage.setItem('shoppingList', JSON.stringify(listItems))
     
 }
   return (
     <div className="App">
      <Header title = "Get this shit done 👇"/>
      <SearchItems
-       search={search}
-       setSearch={setSearch}
      />
      <AddItems
-      newItem = {newItem}
-      setNewItem = {setNewItem} 
-      handleSubmit = {handleSubmit}
+     handleSubmit = {handleSubmit}
+     setNewItem = {setNewItem}
      />
      <Content
      handleCheck = {handleCheck}

@@ -1,13 +1,13 @@
-const SearchItems = ({handleSubmit , search }) => {
+const SearchItems = () => {
     return (
-        <form className = "searchForm" onSubmit = {handleSubmit}>
+        <form className = "searchForm" >
             <label htmlFor = "search">Search</label>
             <input 
                 id='search'
                 type='text'
                 role='searchbox'
                 placeholder='Search Tasks'
-                value={search}
+               
               
             />
         </form>
