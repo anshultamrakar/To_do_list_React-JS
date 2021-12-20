@@ -40,7 +40,10 @@ const addItems = (task) => {
   const myNewItem = {id , checked : false , task}
   const listItems = [...items, myNewItem]
   setItems(listItems)
+  
+ 
 }
+
 
 const handleSubmit = (e) => {
  e.preventDefault();
@@ -52,15 +55,21 @@ const handleSubmit = (e) => {
 const handleCheck = (id) => {
   const listItems = items.map((item) => item.id === id ? {...item , checked : !item.checked} : item)
   setItems(listItems)
+
+
 }
+
 
 const handleDelete = (id) => {
   const listItems =  items.filter((item) => item.id !== id )
   setItems(listItems) 
+
 }
+  
+
   return (
     <div className="App">
-     <Header title = " Get this shit done 👇"/>
+     <Header title = " Get this work done 👇"/>
      <AddItems
      newItem = {newItem}
      handleSubmit = {handleSubmit}
