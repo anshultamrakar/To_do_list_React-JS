@@ -2,4 +2,4 @@
  To-do list app made in React JS 
  live demo 
  
- getthisworkdone.netlify.app
+https://getthisworkdone.netlify.app/
