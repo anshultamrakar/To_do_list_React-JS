@@ -6,6 +6,7 @@ import Footer from './Footer';
 import  { useState , useEffect } from 'react';
 import './App.css';
 
+
 function App() {
 const API_URL = 'http://localhost:3500/items'
 const [items , setItems] = useState([])
@@ -40,8 +41,8 @@ const addItems = (task) => {
   const myNewItem = {id , checked : false , task}
   const listItems = [...items, myNewItem]
   setItems(listItems)
-  
  
+
 }
 
 
@@ -56,14 +57,14 @@ const handleCheck = (id) => {
   const listItems = items.map((item) => item.id === id ? {...item , checked : !item.checked} : item)
   setItems(listItems)
 
-
 }
+
 
 
 const handleDelete = (id) => {
   const listItems =  items.filter((item) => item.id !== id )
   setItems(listItems) 
-
+  
 }
   
 
