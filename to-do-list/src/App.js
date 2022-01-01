@@ -5,10 +5,12 @@ import AddItems from './AddItems';
 import Footer from './Footer';
 import  { useState , useEffect } from 'react';
 import './App.css';
+import { API_URL } from './Constant/data';
+
 
 
 function App() {
-const API_URL = 'http://localhost:3500/items'
+
 const [items , setItems] = useState([])
 const [newItem , setNewItem ] = useState('')
 const [search , setSearch ] = useState('')
@@ -18,7 +20,7 @@ const [isLoading , setIsLoading ] = useState(true)
 useEffect(() => {
   const fetchItems = async() => {
     try {
-      const response = await fetch(API_URL)
+      const response = await fetch(`${API_URL}/items`)
       if(!response.ok) throw Error('Did not receive the expected data')
       const listItems = await response.json()
       console.log(listItems)
@@ -34,6 +36,7 @@ useEffect(() => {
 , 2000)
 
 },[])
+
 
 
 const addItems = (task) => {
@@ -83,7 +86,7 @@ const handleDelete = (id) => {
 <main>
   {isLoading &&  <p> loading .....</p> }
   {fetchError && <p style = {{color : "red"}}>{`Error : ${fetchError}`}</p>}
-{!fetchError  && <Content
+  {!fetchError  && <Content
      items = {items.filter(item => ((item.task).toLowerCase()).includes(search.toLowerCase()))}
     
      handleCheck = {handleCheck}
