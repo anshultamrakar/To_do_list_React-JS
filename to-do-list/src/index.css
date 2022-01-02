@@ -30,15 +30,20 @@ body {
   margin: auto;
 }
 
+
 header {
   width: 100%;
   padding: 0 0.25em;
   background-color: #66d8f5;
   color: #333;
+  font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+
+
 
 main {
   width: 100%;
@@ -46,7 +51,7 @@ main {
   flex-direction: column;
   flex-grow: 1;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   overflow-y: auto;
 }
 
@@ -100,7 +105,8 @@ ul li::before {
 
 .item > label {
   font-size: 0.75rem;
-  align-items: flex-start;
+  display: flex;
+  justify-content: flex-start ;
   flex-grow: 1;
 }
 
