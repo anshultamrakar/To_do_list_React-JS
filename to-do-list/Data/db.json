@@ -3,17 +3,17 @@
         {
             "id": 1,
             "checked": false,
-            "task": "Make a youtube channel "
+            "task": "Almonds, Unsalted, in the blue bag"
         },
         {
             "id": 2,
             "checked": false,
-            "task": "Complete the front end development"
+            "task": "Pizza"
         },
         {
             "id": 3,
             "checked": false,
-            "task": " make sure to make some tea for mommy"
+            "task": "Bread"
         }
     ]
 }

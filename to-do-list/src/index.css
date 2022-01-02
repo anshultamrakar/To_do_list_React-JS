@@ -25,6 +25,7 @@ body {
   height: 100vh; 
   width: 100%; 
   max-width: 700px;
+  background-color: #fff;
   border: 1px solid mediumblue;
   margin: auto;
 }
@@ -32,8 +33,8 @@ body {
 header {
   width: 100%;
   padding: 0 0.25em;
-  background-color: mediumblue;
-  color: aliceblue;
+  background-color: #66d8f5;
+  color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,8 +53,8 @@ main {
 footer {
   width: 100%;
   padding: 0.25em;
-  background-color: mediumblue;
-  color: aliceblue;
+  background-color: #66d8f5;
+  color: #333;
   display: grid;
   place-content: center;
 }
@@ -72,7 +73,7 @@ ul li::before {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0.5rem 0 0.5rem 0.5rem;
+  padding: 1rem 0 0.5rem 0.5rem;
   margin: 0.25rem 0;
   background-color: #eee;
 }
@@ -99,6 +100,7 @@ ul li::before {
 
 .item > label {
   font-size: 0.75rem;
+  align-items: flex-start;
   flex-grow: 1;
 }
 
@@ -116,7 +118,6 @@ ul li::before {
   color: red;
   outline: none;
 }
-
 
 .addForm {
   width: 100%;

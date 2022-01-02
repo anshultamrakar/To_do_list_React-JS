@@ -3,72 +3,55 @@ import Content from './Content';
 import SearchItems from './SearchItems';
 import AddItems from './AddItems';
 import Footer from './Footer';
-import  { useState , useEffect } from 'react';
+import  { useState } from 'react';
 import './App.css';
-import { API_URL } from './Constant/data';
+
 
 
 
 function App() {
 
-const [items , setItems] = useState([])
+const [items , setItems] = useState(JSON.parse(localStorage.getItem('shoppingList')))
 const [newItem , setNewItem ] = useState('')
 const [search , setSearch ] = useState('')
-const [fetchError , setFetchError ] = useState(null)
-const [isLoading , setIsLoading ] = useState(true)
 
-useEffect(() => {
-  const fetchItems = async() => {
-    try {
-      const response = await fetch(`${API_URL}/items`)
-      if(!response.ok) throw Error('Did not receive the expected data')
-      const listItems = await response.json()
-      console.log(listItems)
-      setItems(listItems)
-    }catch(err){
-      setFetchError(err.message)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-  setTimeout(() =>
-    fetchItems()
-, 2000)
 
-},[])
-
+const setAndSavedItem = (newItem) => {
+   setItems(newItem)
+   localStorage.setItem('shoppingList', JSON.stringify(newItem))
+}
 
 
 const addItems = (task) => {
   const id = items.length ? items[items.length - 1].id + 1 : 1;
   const myNewItem = {id , checked : false , task}
   const listItems = [...items, myNewItem]
-  setItems(listItems)
+  setAndSavedItem(listItems)
  
 
 }
 
-
-const handleSubmit = (e) => {
- e.preventDefault();
- if(!newItem) return ;
- addItems(newItem)
-  setNewItem('')
-}
-
 const handleCheck = (id) => {
   const listItems = items.map((item) => item.id === id ? {...item , checked : !item.checked} : item)
-  setItems(listItems)
-
+  setAndSavedItem(listItems)
 }
 
 
 
 const handleDelete = (id) => {
   const listItems =  items.filter((item) => item.id !== id )
-  setItems(listItems) 
+  setAndSavedItem(listItems) 
   
 }
+
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if(!newItem) return ;
+  addItems(newItem)
+   setNewItem('')
+ }
+ 
   
 
   return (
@@ -83,18 +66,11 @@ const handleDelete = (id) => {
      search = {search}
      setSearch = {setSearch}
      />
-<main>
-  {isLoading &&  <p> loading .....</p> }
-  {fetchError && <p style = {{color : "red"}}>{`Error : ${fetchError}`}</p>}
-  {!fetchError  && <Content
-     items = {items.filter(item => ((item.task).toLowerCase()).includes(search.toLowerCase()))}
-    
+    <Content
+     items= {items.filter(item => ((item.task).toLowerCase()).includes(search.toLowerCase()))}
      handleCheck = {handleCheck}
      handleDelete = {handleDelete}
-     />}
-</main>
-    
-    
+     />
      <Footer
       length= {items.length}
       />
