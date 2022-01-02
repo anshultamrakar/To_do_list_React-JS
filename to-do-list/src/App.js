@@ -8,8 +8,6 @@ import apiRequest from './apiRequest';
 import './App.css';
 
 
-
-
 function App() {
 const API_URL = "http://localhost:3400/items"
 
@@ -39,9 +37,6 @@ setTimeout(() => {
 },2000)
  
 },[])
-
-
-
 
 const addItems = async (task) => {
   const id = items.length ? items[items.length - 1].id + 1 : 1;
