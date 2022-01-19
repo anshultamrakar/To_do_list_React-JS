@@ -3,27 +3,22 @@
     {
       "id": 1,
       "checked": false,
-      "task": "Anshul "
+      "task": "Make a youtube channel "
     },
     {
       "id": 2,
       "checked": false,
-      "task": "Akash "
+      "task": "Call your mom twice a day"
     },
     {
       "id": 3,
       "checked": false,
-      "task": "Shalabh "
+      "task": "Clean your room before evening"
     },
     {
       "id": 4,
       "checked": false,
-      "task": "Divyansh "
-    },
-    {
-      "id": 5,
-      "checked": false,
-      "task": "Atmaraam "
+      "task": "make a cup of tea for your father "
     }
   ]
 }
